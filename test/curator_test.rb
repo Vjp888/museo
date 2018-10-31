@@ -123,4 +123,15 @@ class CuratorTest < MiniTest::Test
     assert_equal "Diane Arbus", multi_photo_artists.first.name
     assert_equal @diane_arbus, multi_photo_artists.first
   end
+
+  def test_it_can_find_photos_by_location
+    loc_photos = @curator.photographs_taken_by_artists_from("United States")
+
+    assert_equal "Moonrise, Hernandez", loc_photos.first.name
+    assert_equal 3, loc_photos.length
+    assert_equal "4", loc_photos.last.id
+
+    bad_loc_photos = @curator.photographs_taken_by_artists_from("Argentina")
+    assert_equal [], bad_loc_photos
+  end
 end
