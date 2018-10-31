@@ -3,6 +3,7 @@ require 'minitest/pride'
 require './lib/curator'
 require './lib/photograph'
 require './lib/artist'
+require 'pry'
 
 class CuratorTest < MiniTest::Test
 
@@ -47,19 +48,20 @@ class CuratorTest < MiniTest::Test
   def test_it_can_add_photos
     curator = Curator.new
     curator.add_photograph(@photo_1)
-    assert_equal [@photo_1], curator.photographs
+    assert_equal "1", curator.photographs.first.id
 
     curator.add_photograph(@photo_2)
-    assert_equal [@photo_1, @photo_2], curator.photographs
+    assert_equal "2", curator.photographs.last.id
   end
 
   def test_it_can_add_artists
     curator = Curator.new
 
     curator.add_artist(@artist_1)
-    assert_equal [@artist_1], curator.artists
+    assert_equal "Henri Cartier-Bresson", curator.artists.first.name
+
 
     curator.add_artist(@artist_2)
-    assert_equal [@artist_1, @artist_2], curator.artists
+    assert_equal "Ansel Adams", curator.artists.last.name
   end
 end

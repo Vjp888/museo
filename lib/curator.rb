@@ -6,10 +6,10 @@ class Curator
   end
 
   def add_photograph(photo)
-    @photographs << photo
+    @photographs << Photograph.new(photo)
   end
 
   def add_artist(artist)
-    @artists << artist
+    @artists << Artist.new(artist)
   end
 end
