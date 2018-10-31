@@ -116,4 +116,11 @@ class CuratorTest < MiniTest::Test
     assert_equal 2, photos.length
     assert_instance_of Photograph, photos.first
   end
+
+  def test_it_can_find_artist_with_multiple_photos
+    multi_photo_artists = @curator.artists_with_multiple_photographs
+
+    assert_equal "Diane Arbus", multi_photo_artists.first.name
+    assert_equal @diane_arbus, multi_photo_artists.first
+  end
 end

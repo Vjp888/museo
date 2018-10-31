@@ -34,4 +34,14 @@ class Curator
     end
     photos
   end
+
+  def artists_with_multiple_photographs
+    multi_photo_artists = []
+    @artists.each do |artist|
+      if find_photographs_by_artist(artist).length > 1
+        multi_photo_artists << artist
+      end
+    end
+    multi_photo_artists
+  end
 end
